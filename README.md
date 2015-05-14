@@ -11,14 +11,15 @@ Post:
 
 ```php
 $g = new StatementGenerator;
-$g->generateStatement('schema.yaml');
+echo $g->generateStatement('schema.yaml');
 ```
 
+output:
 ```sql
-CREATE TABLE Category (
+CREATE TABLE Post (
 	id SERIAL, category_name varchar(50),
-	category_created TIMESTAMPTZ DEFAULT now(),
-	category_updated TIMESTAMPTZ DEFAULT now()
+	post_created TIMESTAMPTZ DEFAULT now(),
+	post_updated TIMESTAMPTZ DEFAULT now()
 );
 
 CREATE FUNCTION update_timestamp()	
@@ -29,7 +30,7 @@ BEGIN
 END;
 $$ language 'plpgsql';
 CREATE TRIGGER update_timestamp
-	BEFORE UPDATE ON Category
+	BEFORE UPDATE ON Post
 	FOR EACH ROW
 	EXECUTE PROCEDURE update_timestamp();
 ```
