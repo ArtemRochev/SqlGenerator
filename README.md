@@ -12,8 +12,9 @@ Post:
 returning array
 ```php
 $g = new StatementGenerator;
-echo $g->generateStatement('schema.yaml')[0];
-echo $g->generateStatement('schema.yaml')[1];
+
+echo $g->generateStatements('schema.yaml')[0] . "\n" .
+     $g->generateStatements('schema.yaml')[1] . "\n";
 ```
 
 output:
