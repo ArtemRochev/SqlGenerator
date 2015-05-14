@@ -20,7 +20,7 @@ echo $g->generateStatements('schema.yaml')[0] . "\n" .
 output:
 ```sql
 CREATE TABLE Post (
-	id SERIAL, category_name varchar(50),
+	id SERIAL, post_name varchar(50), post_content text,
 	post_created TIMESTAMPTZ DEFAULT now(),
 	post_updated TIMESTAMPTZ DEFAULT now()
 );
