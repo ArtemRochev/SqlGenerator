@@ -1,0 +1,8 @@
+Post:
+   fields:
+       title: varchar(50)
+       content: text
+
+Category:
+   fields:
+       name: varchar(50)
