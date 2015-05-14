@@ -1,6 +1,6 @@
 # PostgreSQL-StatementGenerator
 Generate ```'CREATE TABLE <table_name> ...'``` statement for PosqtgreSQL<br>
-from yaml file
+from yaml file<br>
 
 ```sql
 Post:
@@ -9,9 +9,11 @@ Post:
     content: text
 ```
 
+returning array
 ```php
 $g = new StatementGenerator;
-echo $g->generateStatement('schema.yaml');
+echo $g->generateStatement('schema.yaml')[0];
+echo $g->generateStatement('schema.yaml')[1];
 ```
 
 output:
