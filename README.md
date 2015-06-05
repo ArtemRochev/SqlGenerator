@@ -10,7 +10,7 @@ Post:
     content: text
 ```
 
-returning array
+usage:
 ```php
 $g = new StatementGenerator;
 
