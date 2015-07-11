@@ -34,6 +34,7 @@ BEGIN
     RETURN NEW;	
 END;
 $$ language 'plpgsql';
+
 CREATE TRIGGER update_timestamp
 	BEFORE UPDATE ON Post
 	FOR EACH ROW
