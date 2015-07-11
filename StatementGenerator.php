@@ -2,30 +2,30 @@
 
 class StatementGenerator {
 	private function buildFields($fieldPrefix, $fields) {
-		$fieldsStr = 'id SERIAL';
+		$fieldsStr = "id SERIAL";
 		
 		foreach ($fields as $fieldName => $fieldType) {
-			$fieldsStr .= ', ' . $fieldPrefix . $fieldName . ' ' . $fieldType;
+			$fieldsStr .= ",\n	" . $fieldPrefix . $fieldName . " " . $fieldType;
 		}
 		
 		return $fieldsStr;
 	}
 	
 	private function buildCreateStatment($tableName, $features) {
-		$fieldPrefix = strtolower($tableName) . '_';
+		$fieldPrefix = strtolower($tableName) . "_";
 		
-		$fields = $this->buildFields($fieldPrefix, $features['fields']);
+		$fields = $this->buildFields($fieldPrefix, $features["fields"]);
 		
 		return sprintf(
-			file_get_contents('sql_tpl/createTable.sql'), 
+			file_get_contents("sql_tpl/createTable.sql"), 
 			$tableName, $fields, strtolower($tableName)
-		);
+		) . "\n";
 	}
 	
 	function buildUpdateTimestampTrigger($tableName) {
 		return 
-			sprintf(file_get_contents('sql_tpl/updateTimestamp_PlPg.sql'), strtolower($tableName) . '_updated') .
-			sprintf(file_get_contents('sql_tpl/updateTimestampTrigger.sql'), $tableName);
+			sprintf(file_get_contents("sql_tpl/updateTimestamp_PlPg.sql"), strtolower($tableName) . "_updated") . "\n" .
+			sprintf(file_get_contents("sql_tpl/updateTimestampTrigger.sql"), $tableName) . "\n";
 	}
 	
 	function parseScheme($fileName) {
@@ -34,13 +34,13 @@ class StatementGenerator {
 	
 	function generateStatements($fileName) {
 		$schema = $this->parseScheme($fileName);
-		$statements = [];
+		$sqlOutput = "";
 		
 		foreach ($schema as $tableName => $features) {
-			$this->statements[] = $this->buildCreateStatment($tableName, $features);
-			$this->statements[] = $this->buildUpdateTimestampTrigger($tableName);
+			$sqlOutput .= $this->buildCreateStatment($tableName, $features);
+			$sqlOutput .= $this->buildUpdateTimestampTrigger($tableName);
 		}
 		
-		return $this->statements;
+		return $sqlOutput;
 	}
 }
