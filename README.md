@@ -1,4 +1,4 @@
-# PostgreSQL-StatementGenerator
+# SqlGenerator
 Generate ```'CREATE TABLE <table_name> ...'``` statement for PosqtgreSQL<br>
 with triggers that update timestamps<br>
 from yaml file<br>
@@ -12,15 +12,17 @@ Post:
 
 usage:
 ```php
-$generator = new StatementGenerator;
+$generator = new SqlGenerator;
 
-echo $generator->generateStatements('schema.yaml');
+echo $generator->generateSql('schema.yaml');
 ```
 
 output:
 ```sql
 CREATE TABLE Post (
-	id SERIAL, post_name varchar(50), post_content text,
+	id SERIAL,
+	post_name varchar(50),
+	post_content text,
 	post_created TIMESTAMPTZ DEFAULT now(),
 	post_updated TIMESTAMPTZ DEFAULT now()
 );
