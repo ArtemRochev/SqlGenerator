@@ -12,10 +12,9 @@ Post:
 
 usage:
 ```php
-$g = new StatementGenerator;
+$generator = new StatementGenerator;
 
-echo $g->generateStatements('schema.yaml')[0] . "\n" .
-     $g->generateStatements('schema.yaml')[1] . "\n";
+echo $generator->generateStatements('schema.yaml');
 ```
 
 output:
