@@ -7,11 +7,11 @@ CREATE TABLE Post (
 );
 
 CREATE FUNCTION update_timestamp()	
-    RETURNS TRIGGER AS $$
-    BEGIN
-        NEW.post_updated := now();
-        RETURN NEW;	
-    END;
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.post_updated := now();
+    RETURN NEW;	
+END;
 $$ language 'plpgsql';
 
 CREATE TRIGGER update_timestamp
@@ -27,11 +27,11 @@ CREATE TABLE Category (
 );
 
 CREATE FUNCTION update_timestamp()	
-    RETURNS TRIGGER AS $$
-    BEGIN
-        NEW.category_updated := now();
-        RETURN NEW;	
-    END;
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.category_updated := now();
+    RETURN NEW;	
+END;
 $$ language 'plpgsql';
 
 CREATE TRIGGER update_timestamp

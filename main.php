@@ -1,8 +1,8 @@
 <?php
 
-require_once('StatementGenerator.php');
+require_once('SqlGenerator.php');
 
-$generator = new StatementGenerator;
+$generator = new SqlGenerator;
 $sqlResult = $generator->generateStatements('schema.yaml');
 
 

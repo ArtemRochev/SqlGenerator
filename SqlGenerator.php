@@ -1,6 +1,6 @@
 <?php
 
-class StatementGenerator {
+class SqlGenerator {
 	private function buildFields($fieldPrefix, $fields) {
 		$fieldsStr = "id SERIAL";
 		
