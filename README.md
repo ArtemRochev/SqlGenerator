@@ -1,5 +1,6 @@
 # PostgreSQL-StatementGenerator
 Generate ```'CREATE TABLE <table_name> ...'``` statement for PosqtgreSQL<br>
+with triggers that update timestamps<br>
 from yaml file<br>
 
 ```sql
@@ -9,7 +10,7 @@ Post:
     content: text
 ```
 
-returning array
+usage:
 ```php
 $g = new StatementGenerator;
 
